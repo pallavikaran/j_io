@@ -1,0 +1,33 @@
+import java.io.*;
+class  RandomFileReading
+{
+	public static void main(String[] args)  throws IOException,FileNotFoundException
+	{
+		File f= new File("xyz.txt");
+		RandomAccessFile raf= new RandomAccessFile(f,"rw");
+		int i;
+		while( (i=raf.read())!= -1 )
+		{
+				System.out.print((char)i);
+		}
+		long ptr= raf.getFilePointer();
+		System.out.println("\nFile Pointer at="+ptr);
+		raf.seek(ptr-12);
+		System.out.println("\nFIVE CHARS ARE=");
+		for (int j=1;j<=5 ;j++ )
+		{
+			System.out.print((char)raf.read());
+		}
+		raf.seek(raf.getFilePointer()-5);
+		System.out.println("\nAfter Replacing=");
+		for(int j=1;j<=5; j++)
+		{
+				raf.write('A');
+		}
+		raf.seek(0);
+	while( (i=raf.read())!= -1 )
+		{
+				System.out.print((char)i);
+		}
+	}
+}

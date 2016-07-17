@@ -1,0 +1,22 @@
+import java.io.*;
+import java.util.Date;
+class ObjectToFile 
+{
+	public static void main(String[] args) throws IOException,FileNotFoundException
+	{
+		File f1= new File("objdata");
+		FileOutputStream fos= new FileOutputStream(f1);
+		ObjectOutputStream oos= new ObjectOutputStream(fos);
+
+		String str=new String("I Love India");
+		Date d= new Date();
+	System.out.println(d);
+		oos.writeObject(str);
+		oos.writeObject(d);
+		MyData md= new MyData();
+		md.showData();
+		oos.writeObject(md);
+
+		System.out.println("Object Saved");
+	}
+}
